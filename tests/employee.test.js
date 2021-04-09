@@ -1,10 +1,10 @@
-const Employee = require ('./lib/Employee'); 
+const Employee = require ('../lib/Employee'); 
 
 describe ('Employee', () => {
 
     describe("Initialization",() =>{
 
-        it('returns an object that it is an instance of hte EMployee class when called w/ new keyword')
+        it('returns an object that it is an instance of the Employee class when called with new keyword')
 
         const employee = new Employee(); 
         expect(employee instanceof Employee).toBeTruthy(); //or tobe(true)
@@ -12,7 +12,7 @@ describe ('Employee', () => {
     })
 
     it('it sets the name property based on constructor argument',() => {
-        const name = "G"; 
+        const name = "Grace"; 
         const employee = new Employee(name); 
 
         expect(employee.name).toBe(name); 
@@ -21,7 +21,7 @@ describe ('Employee', () => {
 
     it('it sets the name property based on constructor argument',() => {
         const id = 1;
-        const (employee.id).toBe(id); 
+        expect (employee.id).toBe(id); 
     })
     it ('it sets the name property based on constructor argument',() => {
         const email = 'test@gmail.com'
@@ -43,7 +43,7 @@ describe('getId',() => {
     const id = 3; 
     const employee = new Employee ("",id); 
     expect(employee.getId()), toBe(id); 
-}
+});
 
 describe ('getEmail', () => {
     it ('returns the email property when getEmail() is called', () => {
@@ -52,9 +52,9 @@ describe ('getEmail', () => {
     })
 }); 
 
-describe ('getRole', () =>) {
+describe ('getRole', () => {
     it ("returns Employee when getRole() method is called", () => {
         const employee = new Employee (); 
         expect (employee.getRole()).toBe('Employee'); 
-    }
-}
+    })
+})
