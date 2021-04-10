@@ -3,10 +3,10 @@ const Employee = require ('../lib/Employee');
 describe ('Employee', () => {
 
     describe("Initialization",() =>{
-        it("returns an object that it is an instance of the Employee class when called with new keyword")
+        it("returns an object that it is an instance of the Employee class when called with new keyword", () => {
         const employee = new Employee(); 
-        expect(employee instanceof Employee).toBe(true); 
-
+        expect(typeof(employee)).toBe("object"); 
+        })
     })
 
     it("it sets the name property based on constructor argument",() => {
@@ -35,14 +35,14 @@ describe("getName",() => {
     it("returns the name property when getName() is called", () => {
         const name = "Hank"; 
         const employee = new Employee(name); 
-        expect(employee.getName().toBe(name))
+        expect(employee.getName()).toBe(name);
     })
 })
 describe("getId",() => {
     it ("returns the id property when the getId() method is called", () =>{
     const id = 123; 
     const employee = new Employee ("",id); 
-    expect(employee.getId()), toBe(id); 
+    expect(employee.getId()).toBe(id);  
     });
 });
 

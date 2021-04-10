@@ -2,10 +2,10 @@ const Engineer = require ("../lib/Engineer");
 
 describe ("Engineer", () => {
     describe ("Initialization", () => {
-        it("returns an object that it is an instance of the Engineer class when called with new keyword")
+        it("returns an object that it is an instance of the Engineer class when called with new keyword", () => {
         const engineer = new Engineer(); 
-        expect(engineer instanceof Engineer).toBe(true); 
-
+        expect(typeof(engineer)).toBe("object");  
+    })
     })
 
     it("it sets the name property based on constructor argument",() => {
@@ -34,7 +34,7 @@ describe("getName",() => {
     it("returns the name property when getName() is called", () => {
         const name = "Hank"; 
         const engineer = new Engineer(name); 
-        expect(engineer.getName().toBe(name))
+        expect(engineer.getName()).toBe(name);
     })
 })
 
@@ -42,7 +42,7 @@ describe("getId",() => {
     it ("returns the id property when the getId() method is called", () =>{
     const id = 123; 
     const engineer = new Engineer ("",id); 
-    expect(engineer.getId()), toBe(id); 
+    expect(engineer.getId()).toBe(id);  
     });
 });
 

@@ -1,10 +1,11 @@
-const Manager = require('../lib/manager');
+const Manager = require('../lib/Manager');
 
 describe('Manager', () => {
     describe ('Initialization', () => {
         it('returns an object that is an instance of the Manager class when called with the new keyword', () => {
             const manager = new Manager();
-            expect(manager instanceof Manager).toBe(true);
+            expect(typeof(manager)).toBe("object"); 
+            
           });
 
           it('it sets the name property based on constructor argument', () => {
@@ -64,8 +65,8 @@ describe('Manager', () => {
 
     describe ('getOfficeNum()', () => {
         it ('returns officeNumber through getOfficeNum() method', () => { 
-        const manager = new Manager ('Man',123,'man@example.com',getOfficeNum);
-        expect(manager.getOfficeNum()).toBe(getOfficeNum); 
+        const manager = new Manager ('Man',123,'man@example.com',officeNum);
+        expect(manager.officeNum).toBe(getOfficeNum()); 
         });
     });
 
