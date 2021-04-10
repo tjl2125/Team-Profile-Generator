@@ -16,20 +16,20 @@ describe ("Intern", () => {
 
 
 
-    test ("can set the university through the constructor", ()=> { 
-    const uni = "Columbia University";
-    const intern = new Intern ("Int", 1, "student@example.com", uni);
-    expect (intern.university).toBe(uni); 
-    });
+    // test ("can set the university through the constructor", ()=> { 
+    // const uni = "Columbia University";
+    // const intern = new Intern ("Int", 1, "student@example.com", uni);
+    // expect (intern.university).toBe(uni); 
+    // });
 
-    test ("getRole() should return Intern", () => {
-    const role = "Intern"; 
-    const intern = new Intern ("Int", 1, "student@example.com", "Columbia University");
-    expect(intern.getRole()).toBe(role); 
-    });
+    // test ("getRole() should return Intern", () => {
+    // const role = "Intern"; 
+    // const intern = new Intern ("Int", 1, "student@example.com", "Columbia University");
+    // expect(intern.getRole()).toBe(role); 
+    // });
 
-    test ("getUniveristy() can get the university name", () => {
-    const univ = "Columbia University";
-    const intern = new Intern("Int",1,"student@example.com",univ);
-    expect(intern.getUniversity()).toBe(univ); 
-    });
+    // test ("getUniveristy() can get the university name", () => {
+    // const univ = "Columbia University";
+    // const intern = new Intern("Int",1,"student@example.com",univ);
+    // expect(intern.getUniversity()).toBe(univ); 
+    // });
