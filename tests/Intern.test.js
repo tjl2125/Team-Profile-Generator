@@ -67,10 +67,10 @@ describe ("Intern", () => {
     
       describe('getUniversity', () => {
         it("returns university name when the getUniversity() method is called", () => {
-          const university = 'Columbia';
-          const intern = new Intern("", 123, 'test@example.com', university);
+          const uni = 'Columbia';
+          const intern = new Intern("", 123, 'test@example.com', uni);
     
-          expect(intern.getUniversity()).toBe(university);
+          expect(intern.getUniversity()).toBe(uni);
         });
       });
 })
