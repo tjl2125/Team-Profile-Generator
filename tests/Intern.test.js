@@ -1,35 +1,77 @@
 const Intern = require ("../lib/Intern"); 
 
 describe ("Intern", () => {
-    describe ("Initialization", () => {
-        it ("returns the Intern role through getRole()", () => {
-            const intern = new Intern (); 
-            expect (intern.getRole()).toBe("Intern"); 
+    describe('Initialization', () => {
+        it('returns an object that is an instance of the Intern class when called with the new keyword', () => {
+          const intern = new Intern();
+          expect(intern instanceof Intern).toBe(true);
         })
-        it ("returns the name of the university through getUniversity()", () => {
-            const intern = new Intern (); 
-            const uni = "Columbia"; 
-            expect (intern.getUniversity()).toBe("Columbia"); 
-        })
-    })
+    
+        it('it sets the name property based on constructor argument', () => {
+          const name = "Int";
+          const intern = new Intern(name);
+    
+          expect(intern.name).toBe(name);
+        });
+    
+        it('it sets the id property based on constructor argument', () => {
+          const id = 123;
+          const intern = new Intern("", id);
+    
+          expect(intern.id).toBe(id);
+        });
+    
+        it('it sets the email property based on constructor argument', () => {
+          const email = 'test@example.com';
+          const intern = new Intern("", 123, email);
+    
+          expect(intern.email).toBe(email);
+        });
+      })
+    
+      describe('getName', () => {
+        it('returns the name property when the getName() method is called', () => {
+          const name = "Int";
+          const intern = new Intern(name);
+    
+          expect(intern.getName()).toBe(name);
+        });
+      })
+    
+      describe( 'getId', () => {
+        it('returns the id property when the getId() method is called', () => {
+          const id = 123;
+          const intern = new Intern("", id);
+    
+          expect(intern.getId()).toBe(id);
+        });
+      });
+    
+      describe('getEmail', () => {
+        it('returns the email property when the getEmail() method is called', () => {
+          const email = 'test@example.com';
+          const intern = new Intern("", 123, email);
+    
+          expect(intern.getEmail()).toBe(email);
+        });
+      });
+    
+    
+      describe('getRole', () => {
+        it("returns 'intern' when the getRole() method is called", () => {
+          const intern = new Intern();
+    
+          expect(intern.getRole()).toBe('Intern');
+        });
+      });
+    
+      describe('getUniversity', () => {
+        it("returns university name when the getUniversity() method is called", () => {
+          const university = 'Columbia';
+          const intern = new Intern("", 123, 'test@example.com', university);
+    
+          expect(intern.getUniversity()).toBe(university);
+        });
+      });
 })
 
-
-
-    // test ("can set the university through the constructor", ()=> { 
-    // const uni = "Columbia University";
-    // const intern = new Intern ("Int", 1, "student@example.com", uni);
-    // expect (intern.university).toBe(uni); 
-    // });
-
-    // test ("getRole() should return Intern", () => {
-    // const role = "Intern"; 
-    // const intern = new Intern ("Int", 1, "student@example.com", "Columbia University");
-    // expect(intern.getRole()).toBe(role); 
-    // });
-
-    // test ("getUniveristy() can get the university name", () => {
-    // const univ = "Columbia University";
-    // const intern = new Intern("Int",1,"student@example.com",univ);
-    // expect(intern.getUniversity()).toBe(univ); 
-    // });

@@ -57,13 +57,13 @@ describe('Manager', () => {
 
     describe ('getRole()', () => {
         it ('should return Manager when the getRole() method is called', () => {
-        const manager = new Manager ('Man',1,'man@example.com'); 
+        const manager = new Manager ('Man',123,'man@example.com'); 
         expect(manager.getRole()).toBe('Manager');
         });
     });
 
     describe ('getOfficeNum()', () => {
-        it ('returns officeNumber through getOffice() method', () => { 
+        it ('returns officeNumber through getOfficeNum() method', () => { 
         const manager = new Manager ('Man',123,'man@example.com',getOfficeNum);
         expect(manager.getOfficeNum()).toBe(getOfficeNum); 
         });

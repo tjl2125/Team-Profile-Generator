@@ -18,14 +18,14 @@ describe ('Employee', () => {
     })
 
     it("it sets the id property based on constructor argument", () => {
-        const id = 1;
+        const id = 123;
         const employee = new Employee("", id);
         expect(employee.id).toBe(id);
     });
 
     it ("it sets the email property based on constructor argument",() => {
-        const email = "test@gmail.com"
-        const employee = new Employee ("",0,email);
+        const email = "test@example.com"
+        const employee = new Employee ("",123,email);
         expect(employee.email).toBe(email) 
     })
 
@@ -40,7 +40,7 @@ describe("getName",() => {
 })
 describe("getId",() => {
     it ("returns the id property when the getId() method is called", () =>{
-    const id = 3; 
+    const id = 123; 
     const employee = new Employee ("",id); 
     expect(employee.getId()), toBe(id); 
     });
@@ -48,8 +48,8 @@ describe("getId",() => {
 
 describe ("getEmail", () => {
     it ("returns the email property when getEmail() is called", () => {
-        const email = "test@gmail.com";
-        const employee = new Employee ("",0,email); 
+        const email = "test@example.com";
+        const employee = new Employee ("",123,email); 
         expect(employee.getEmail()).toBe(email); 
     })
 }); 
