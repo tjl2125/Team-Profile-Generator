@@ -63,10 +63,11 @@ describe('Manager', () => {
         });
     });
 
-    describe ('getOfficeNum()', () => {
-        it ('returns officeNumber through getOfficeNum() method', () => { 
-        const manager = new Manager ('Man',123,'man@example.com',officeNum);
-        expect(manager.officeNum).toBe(getOfficeNum()); 
+    describe ('getOfficeNumber()', () => {
+        it ('returns officeNumber through getOfficeNumber() method', () => { 
+        const officeNumber = 123
+        const manager = new Manager ('Man',123,'man@example.com',officeNumber);
+        expect(manager.getOfficeNumber()).toBe(officeNumber);  
         });
     });
 

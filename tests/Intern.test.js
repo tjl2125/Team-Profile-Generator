@@ -65,17 +65,13 @@ describe ("Intern", () => {
         });
       });
     
-      describe('getUniversity', () => {
-        it("returns university name when the getUniversity() method is called", () => {
-          const university = 'Columbia';
-          const intern = new Intern("",123,'test@example.com',university);
+      describe('getSchool', () => {
+        it("returns school name when the getSchool() method is called", () => {
+          const school = 'Columbia';
+          const intern = new Intern("",123,'test@example.com',school);
     
-          expect(intern.getUniversity()).toBe(university);
+          expect(intern.getSchool(school)).toBe("Columbia");
         });
       });
 })
 
-// const university = 'Columbia';
-//           const intern = new Intern("", 123, 'test@example.com', university);
-    
-//           expect(intern.getUniversity()).toBe(university);
