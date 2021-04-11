@@ -23,6 +23,7 @@ Then to begin the process of calling the application, open the integrated termin
 ``` 
 node index.js 
 ```
+![Demo-video](./assets/media/Demo-video.mp4)
 
 # Installation 
 Clone the repository from Github. Open the integrated terminal. Make sure the package.json is present. Install the necessary dependencies through npm i . 
@@ -39,7 +40,7 @@ Then
 ```
 npm run test
 ```
-![Tests-Passed](./assets/media/Tests passed.PNG)
+![Tests-Passed](./assets/media/Tests-passed.PNG)
 
 # License
 This project is under the MIT License
