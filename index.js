@@ -5,10 +5,11 @@ const path = require ("path")
 const Engineer = require ("./lib/Engineer");
 const Manager = require ("./lib/Manager");
 const Intern = require ("./lib/Intern"); 
+const Employee = require("./lib/Employee");
 
 // use path module to define the path to the output directory
 const OUTPUT_DIR = path.resolve(__dirname, "output")
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+const outputPath = path.join(OUTPUT_DIR, "teamprofile.html");
 
 // create an array to hold all of our team members
 const employees = []; 
@@ -28,6 +29,7 @@ function addMember() {
         type: "list",
         message: "Select team member's role",
         choices: [
+            "Employee",
             "Engineer",
             "Intern",
             "Manager"
@@ -48,9 +50,10 @@ function addMember() {
             roleInfo = "GitHub username";
         } else if (role === "Intern") {
             roleInfo = "school name";
-        } else {
+        } else if (role === "Manager") {
             roleInfo = "office phone number";
-        }
+        } else 
+            roleInfo = "role info, but non-applicable if Employee. Skip."; 
         inquirer.prompt([{
             message: `Enter team member's ${roleInfo}`,
             name: "roleInfo"
@@ -70,9 +73,12 @@ function addMember() {
                 newMember = new Engineer(name, id, email, roleInfo);
             } else if (role === "Intern") {
                 newMember = new Intern(name, id, email, roleInfo);
-            } else {
+            } else if (role === "Manager") {
                 newMember = new Manager(name, id, email, roleInfo);
+            } else {
+                newMember = new Employee(name,id,email,roleInfo);
             }
+
             employees.push(newMember);
             addHtml(newMember)
             .then(function() {
@@ -87,14 +93,6 @@ function addMember() {
     });
 }
 
-// function renderHtml(memberArray) {
-//     startHtml();
-//     for (const member of memberArray) {
-//         addHtml(member);
-//     }
-//     finishHtml();
-// }
-
 function startHtml() {
     const html = `<!DOCTYPE html>
     <html lang="en">
@@ -106,7 +104,7 @@ function startHtml() {
         <title>Team Profile</title>
     </head>
     <body>
-        <nav class="navbar navbar-dark bg-dark mb-5">
+        <nav class="navbar navbar-dark bg-primary mb-5">
             <span class="navbar-brand mb-0 h1 w-100 text-center">Team Profile</span>
         </nav>
         <div class="container">
@@ -130,11 +128,11 @@ function addHtml(member) {
             const gitHub = member.getGithub();
             data = `<div class="col-6">
             <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Engineer</h5>
+            <h5 class="card-header bg-info">${name}<br /><br />Engineer</h5>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item">Email Address: ${email}</li>
-                <li class="list-group-item">GitHub: ${gitHub}</li>
+                <li class="list-group-item">Email Address: <a href= "${email}"> ${email}<a></li>
+                <li class="list-group-item">GitHub: <a href= "https://www.github.com/${gitHub}">${gitHub}<a></li>
             </ul>
             </div>
         </div>`;
@@ -142,26 +140,36 @@ function addHtml(member) {
             const school = member.getSchool();
             data = `<div class="col-6">
             <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Intern</h5>
+            <h5 class="card-header bg-info">${name}<br /><br />Intern</h5>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item">Email Address: ${email}</li>
+                <li class="list-group-item">Email Address: <a href= "${email}"> ${email}<a></li>
                 <li class="list-group-item">School: ${school}</li>
             </ul>
             </div>
         </div>`;
-        } else {
+        } else if (role === "Manager") {
             const officePhone = member.getOfficeNumber();
             data = `<div class="col-6">
             <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Manager</h5>
+            <h5 class="card-header bg-info">${name}<br /><br />Manager</h5>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item">Email Address: ${email}</li>
+                <li class="list-group-item">Email Address: <a href= "${email}"> ${email}<a></li>
                 <li class="list-group-item">Office Phone: ${officePhone}</li>
             </ul>
             </div>
         </div>`
+        } else {
+                data = `<div class="col-6">
+                <div class="card mx-auto mb-3" style="width: 18rem">
+                <h5 class="card-header bg-info">${name}<br /><br />Employee</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email Address: <a href= "${email}"> ${email}<a></li>
+                </ul>
+                </div>
+            </div>`;
         }
         console.log("adding team member");
         fs.appendFile("./output/team.html", data, function (err) {
@@ -189,40 +197,4 @@ function finishHtml() {
     console.log("end");
 }
 
-// addMember();
-// startHtml();
-// addHtml("hi")
-// .then(function() {
-// finishHtml();
-// });
 init();
-	// function to create a manager
-		// prompt user with questions needed to satisfy the input for a manager object
-		// .then statement
-			// create a new instance of the Manager class
-			// push the new manager object to the team members array
-			// call the function to create the rest of the team
-  
-	// function to create the rest of the team
-		// prompt user to select which type of employee they would like to add
-		// options include engineer, intern, or an option to not add any more team members
-		// .then statement
-			// if a type of employee was selected, call function to add that type of employee
-			// if the other option was selected, call the function to create the output
-
-	// function to add an engineer
-		// same idea as create manager
-  
-	// function to add an intern
-		// same idea as create manager
-
-	// function to create the output
-		// call the function from page-template module and pass in the team members array and save to a data variable
-		// use fs module to write the a file -> pass in the fs.write(outputPath, the data, and "utf-8")
-
-  // call the function to create a manager to start the process
-
-// call init()
-
-
-
